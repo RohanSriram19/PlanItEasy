@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Maker</title>
+</head>
+<body>
+<h1>Autism-Friendly Schedule Maker</h1>
+
+<!-- Form to submit a task and an image -->
+<form method="POST" enctype="multipart/form-data">
+    <label for="task">Task:</label>
+    <input type="text" id="task" name="task" required>
+    <label for="image">Choose Image:</label>
+    <input type="file" id="image" name="image" accept="image/*" required>
+    <button type="submit">Add to Schedule</button>
+</form>
+
+<h2>Schedule</h2>
+<ul>
+    <!-- Loop through the schedule and display each task and its image -->
+    {% for entry in schedule %}
+    <li>
+        <strong>{{ entry.task }}</strong><br>
+        <img src="{{ entry.image_path }}" alt="{{ entry.task }}" width="100">
+    </li>
+    {% endfor %}
+</ul>
+</body>
+</html>
